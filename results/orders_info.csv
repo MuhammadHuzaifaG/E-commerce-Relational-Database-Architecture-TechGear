@@ -1,0 +1,16 @@
+order_id,customer_name,product_name,quantity,unit_price
+1,"John Doe","ProBook X1",1,1200.00
+1,"John Doe","Mechanical Keyboard",1,150.00
+2,"Jane Smith","Wireless Mouse",1,45.00
+3,"Mike Johnson","USB-C Hub",1,25.00
+3,"Mike Johnson","Antivirus License",1,60.00
+4,"Rachel Green","Gaming Laptop Max (RTX 4090)",1,2500.00
+9,"Ross Geller","UltraSlim Ultrabook 14"",1,1400.00
+9,"Ross Geller","Noise Cancelling Headphones",1,300.00
+5,"Monica Geller","4K IPS Monitor 27-inch",1,450.00
+5,"Monica Geller","Noise Cancelling Headphones",1,300.00
+6,"Chandler Bing","4K IPS Monitor 27-inch",1,450.00
+7,"Joey Tribbiani","Cloud Storage 1TB (Annual)",1,120.00
+8,"Phoebe Buffay","USB-C Braided Cable 6ft",1,15.00
+10,"Gunther Central","Graphic Design Suite (1Yr Sub)",1,299.00
+10,"Gunther Central","Laptop Cooling Pad",1,35.00

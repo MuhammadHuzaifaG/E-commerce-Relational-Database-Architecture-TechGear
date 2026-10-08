@@ -1,0 +1,45 @@
+employee_name,salary,manager_name
+"Alice Admin",95000.00,NULL
+"Bob Builder",60000.00,"Alice Admin"
+"Charlie Chaplin",55000.00,"Alice Admin"
+"Diana Prince",50000.00,"Bob Builder"
+"Evan Wright",82000.00,"Alice Admin"
+"Fiona Gallagher",78000.00,"Alice Admin"
+"George Costanza",58000.00,"Bob Builder"
+"Hannah Abbott",52000.00,"Bob Builder"
+"Ian Malcolm",95000.00,NULL
+"Julia Styles",53000.00,"Ian Malcolm"
+"Kevin Hart",61000.00,"Ian Malcolm"
+"Alice Admin",95000.00,NULL
+"Bob Builder",60000.00,"Alice Admin"
+"Charlie Chaplin",55000.00,"Alice Admin"
+"Diana Prince",50000.00,"Bob Builder"
+"Evan Wright",82000.00,"Alice Admin"
+"Fiona Gallagher",78000.00,"Alice Admin"
+"George Costanza",58000.00,"Bob Builder"
+"Hannah Abbott",52000.00,"Bob Builder"
+"Ian Malcolm",95000.00,NULL
+"Julia Styles",53000.00,"Ian Malcolm"
+"Kevin Hart",61000.00,"Ian Malcolm"
+"Alice Admin",95000.00,NULL
+"Bob Builder",60000.00,"Alice Admin"
+"Charlie Chaplin",55000.00,"Alice Admin"
+"Diana Prince",50000.00,"Bob Builder"
+"Evan Wright",82000.00,"Alice Admin"
+"Fiona Gallagher",78000.00,"Alice Admin"
+"George Costanza",58000.00,"Bob Builder"
+"Hannah Abbott",52000.00,"Bob Builder"
+"Ian Malcolm",95000.00,NULL
+"Julia Styles",53000.00,"Ian Malcolm"
+"Kevin Hart",61000.00,"Ian Malcolm"
+"Alice Admin",95000.00,NULL
+"Bob Builder",60000.00,"Alice Admin"
+"Charlie Chaplin",55000.00,"Alice Admin"
+"Diana Prince",50000.00,"Bob Builder"
+"Evan Wright",82000.00,"Alice Admin"
+"Fiona Gallagher",78000.00,"Alice Admin"
+"George Costanza",58000.00,"Bob Builder"
+"Hannah Abbott",52000.00,"Bob Builder"
+"Ian Malcolm",95000.00,NULL
+"Julia Styles",53000.00,"Ian Malcolm"
+"Kevin Hart",61000.00,"Ian Malcolm"
