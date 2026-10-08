@@ -3,9 +3,6 @@
 ## Main Challenge
 E-commerce platform databases frequently encounter data redundancy, referential integrity failure, and transactional stock errors during high-volume purchasing. Without constraint enforcement, schema normalization, and automated audit trails, systems suffer from orphaned purchase records, inaccurate inventory counts, and unmonitored price changes.
 
-## Track Alignment
-Database Design, Relational Data Modeling, and Data Engineering Architecture.
-
 ## Project Description
 
 ### Problem
