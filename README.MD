@@ -11,11 +11,6 @@ Legacy e-commerce databases often mix operational transaction processing with re
 ### Solution
 This project implements a fully normalized relational MySQL database schema (`techgear_db`) designed for enterprise retail management. The solution establishes strict data integrity using relational constraints, handles bad or inconsistent raw data, provides multi-table reporting capabilities, enforces transactional safety during order placement, and automates auditing through database triggers and stored procedures.
 
-### Target Users
-- **Backend Engineers**: Requiring reliable transaction handling and relational integrity for API integration.
-- **Database Administrators (DBAs)**: Seeking structural schema examples with indexing, triggers, and automated logging.
-- **Data Analysts**: Needing optimized analytical views and clean data aggregation paths for business intelligence dashboards.
-
 ### Business Impact
 - **Data Integrity**: Foreign key constraints with explicit CASCADE and RESTRICT rules eliminate orphaned records.
 - **Transactional Consistency**: Manual transaction control (`COMMIT` / `ROLLBACK`) prevents inventory over-selling during order processing.
@@ -26,12 +21,12 @@ This project implements a fully normalized relational MySQL database schema (`te
 
 ## Tech Stack
 - **Database Engine**: MySQL Server 8.0+
-- **Management Tools**: MySQL Command Line Client / MySQL Workbench / DBeaver
-- **Dialect Features**: Stored Procedures, Triggers, Views, InnoDB Engine Transactions, Foreign Keys, Indexing
+- **Management Tools**: MySQL Workbench 
+- **Dialect Features**: Stored Procedures, Triggers, Views, Foreign Keys, Indexing
 
 ---
 
-## Key Features & Architecture
+## Architecture
 
 1. **Normalized Relational Schema**: 5 core tables (`employees`, `customers`, `products`, `orders`, `order_items`) linked by relational constraints.
 2. **Self-Referencing Relationships**: Employee-to-manager hierarchical modeling using Self-JOIN queries.
@@ -45,27 +40,31 @@ This project implements a fully normalized relational MySQL database schema (`te
 ## Repository Data Schema Setup & Results
 
 ### Schema Overview
-+----------------+ +-----------------+ +----------------+
-| customers | | orders | | order_items |
-+----------------+ +-----------------+ +----------------+
-| id (PK) |<----->| order_id (PK) |<----->| item_id (PK) |
-| name | | customer_id(FK) | | order_id (FK) |
-| email (UQ) | | status | | product_id(FK) |
-| phone_number | | total_amount | | quantity |
-| loyalty_points | +-----------------+ | unit_price |
-+----------------+ +----------------+
+
+```
+
++----------------+       +-----------------+       +----------------+
+|   customers    |       |     orders      |       |  order_items   |
++----------------+       +-----------------+       +----------------+
+| id (PK)        |<----->| order_id (PK)   |<----->| item_id (PK)   |
+| name           |       | customer_id(FK) |       | order_id (FK)  |
+| email (UQ)     |       | status          |       | product_id(FK) |
+| phone_number   |       | total_amount    |       | quantity       |
+| loyalty_points |       +-----------------+       | unit_price     |
++----------------+                                 +----------------+
 |
 v
 +----------------+
-| products |
+|    products    |
 +----------------+
-| id (PK) |
-| product_name |
-| category |
-| price |
+| id (PK)        |
+| product_name   |
+| category       |
+| price          |
 | stock_quantity |
 +----------------+
 
+```
 
 ### Sample Analytical Results
 
@@ -80,59 +79,102 @@ SELECT
 FROM products p
 LEFT JOIN order_items oi ON p.id = oi.product_id
 GROUP BY p.category;
-Expected Output Table:
 
-category	total_revenue	avg_product_price
-Laptops	5100.00	1700.000000
-Peripherals	1275.00	181.250000
-Accessories	75.00	80.000000
-Software	479.00	159.666667
-2. Price Change Verification Log (price_audit_log)
+```
+
+**Expected Output Table:**
+
+| category | total_revenue | avg_product_price |
+| --- | --- | --- |
+| Laptops | 5100.00 | 1700.000000 |
+| Peripherals | 1275.00 | 181.250000 |
+| Accessories | 75.00 | 80.000000 |
+| Software | 479.00 | 159.666667 |
+
+#### 2. Price Change Verification Log (`price_audit_log`)
+
 Verifies trigger performance when a product price update occurs.
 
-Expected Output Table:
+**Expected Output Table:**
 
-log_id	product_id	old_price	new_price	changed_at
-1	1	1200.00	1100.00	2026-10-07 15:15:00
-Prerequisites
-•	MySQL Server: Version 8.0 or higher installed locally or via Docker.
+| log_id | product_id | old_price | new_price | changed_at |
+| --- | --- | --- | --- | --- |
+| 1 | 1 | 1200.00 | 1100.00 | 2026-10-07 15:15:00 |
 
-•	Git: Installed for repository cloning.
+---
 
-•	MySQL Client: Terminal interface (mysql) or a database GUI client (e.g., MySQL Workbench, DBeaver).
+## Prerequisites
 
-Local Setup & Execution Guide
-Step 1: Clone the Repository
-Bash
-git clone [https://github.com/your-username/techgear-db-architecture.git](https://github.com/your-username/techgear-db-architecture.git)
+* **MySQL Server**: Version 8.0 or higher installed locally or via Docker.
+* **Git**: Installed for repository cloning.
+* **MySQL Client**: Terminal interface (`mysql`) or a database GUI client (e.g., MySQL Workbench, DBeaver).
+
+---
+
+### Folder Structure
+
+```text
+techgear-db-architecture/
+├── README.md
+├── scripts/
+├── 01_schema_and_constraints.sql
+├── 02_data_sanitization_and_cleaning.sql
+├── 03_bulk_data_insertion.sql
+└── 05_procedures_triggers_transactions.sql
+└── output_logs/
+    └── images
+└── results/
+    └── images & csv files
+
+```
+
+---
+
+## Local Setup & Execution Guide
+
+### Step 1: Clone the Repository
+
+```bash
+git clone [https://github.com/muhammadhuzaifag/techgear-db-architecture.git](https://github.com/your-username/techgear-db-architecture.git)
 cd techgear-db-architecture
-Step 2: Connect to MySQL Engine
+
+```
+
+### Step 2: Connect to MySQL Engine
+
 Start your MySQL terminal client:
 
-Bash
+```bash
 mysql -u root -p
-Step 3: Execute Setup Scripts Sequentially
+
+```
+
+### Step 3: Execute Setup Scripts Sequentially
+
 Run the script files in order from within the repository root or source them inside your MySQL client:
 
-SQL
--- 1. Create Schema and Constraints
-SOURCE scripts/01_schema_and_constraints.sql;
+```sql
+-- 1. Create DB & TABLES
+SOURCE 01_db_and_tables.sql;
 
--- 2. Clean and Sanitize Raw Data
-SOURCE scripts/02_data_sanitization_and_cleaning.sql;
+-- 2. Populate Database with Bulk Test Data
+SOURCE 02_data_insertion.sql;
 
--- 3. Populate Database with Bulk Test Data
-SOURCE scripts/03_bulk_data_insertion.sql;
+-- 3. Clean Raw Data
+SOURCE 03_data_cleaning.sql;
 
--- 4. Load Analytical Views and Reporting Logic
-SOURCE scripts/04_analytics_and_views.sql;
+-- 4. SQL Queries
+SOURCE 04_sql_queries.sql;
 
--- 5. Compile Procedures, Triggers, and Run Transaction Verification
-SOURCE scripts/05_procedures_triggers_transactions.sql;
-Step 4: Verify Installation
+```
+
+### Step 4: Verify Installation
+
 Verify table counts and view functionality:
-SQL
+
+```sql
 USE techgear_db;
 SHOW FULL TABLES WHERE Table_type = 'VIEW' OR Table_type = 'BASE TABLE';
 SELECT * FROM high_value_pending_orders;
 
+```
