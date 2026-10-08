@@ -178,3 +178,5 @@ SHOW FULL TABLES WHERE Table_type = 'VIEW' OR Table_type = 'BASE TABLE';
 SELECT * FROM high_value_pending_orders;
 
 ```
+
+**Credit:** [@codewithharry](https://github.com/codewithharry)
