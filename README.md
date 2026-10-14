@@ -1,1 +1,0 @@
-# E-commerce-Relational-Database-Architecture-TechGear
