@@ -11,6 +11,8 @@ Legacy e-commerce databases often mix operational transaction processing with re
 ### Solution
 This project implements a fully normalized relational MySQL database schema (`techgear_db`) designed for enterprise retail management. The solution establishes strict data integrity using relational constraints, handles bad or inconsistent raw data, provides multi-table reporting capabilities, enforces transactional safety during order placement, and automates auditing through database triggers and stored procedures.
 
+<img width="879" height="636" alt="11" src="https://github.com/MuhammadHuzaifaG/E-commerce-Relational-Database-Architecture-TechGear/blob/main/output_logs/main_window.PNG" />
+
 ### Business Impact
 - **Data Integrity**: Foreign key constraints with explicit CASCADE and RESTRICT rules eliminate orphaned records.
 - **Transactional Consistency**: Manual transaction control (`COMMIT` / `ROLLBACK`) prevents inventory over-selling during order processing.
@@ -25,6 +27,8 @@ This project implements a fully normalized relational MySQL database schema (`te
 - **Dialect Features**: Stored Procedures, Triggers, Views, Foreign Keys, Indexing
 
 ---
+
+<img width="879" height="636" alt="11" src="https://github.com/MuhammadHuzaifaG/E-commerce-Relational-Database-Architecture-TechGear/blob/main/results/result_3.PNG" />
 
 ## Architecture
 
@@ -81,6 +85,8 @@ LEFT JOIN order_items oi ON p.id = oi.product_id
 GROUP BY p.category;
 
 ```
+
+<img width="879" height="636" alt="11" src="https://github.com/MuhammadHuzaifaG/E-commerce-Relational-Database-Architecture-TechGear/blob/main/output_logs/output.PNG" />
 
 **Expected Output Table:**
 
